@@ -47,12 +47,12 @@ function custom_footer_text () {
      return '欢迎使用 <a href="#">xxx</a> 后台管理系统';
 }
 
-/** 轻量级可选连接 CDN 替换 simple selective CDN */
+/** 轻量级可选链接 CDN 替换 simple selective CDN */
 function ssc_cdn_run($html) {
 	$settings = array(
-		'local_hosts' => [],  // 本地需要替换的域名
-		'cdn_host' => '',  // CDN 域名
-		'cdn_exts' => 'png|jpg|jpeg|gif|ico',  // 扩展名（使用|分隔）
+		'local_hosts' => [],                    // 本地需要替换的域名
+		'cdn_host' => '',                       // CDN 域名
+		'cdn_exts' => 'png|jpg|jpeg|gif|ico',   // 扩展名（使用|分隔）
 		'cdn_dirs' => 'wp-content|wp-includes'  // 目录（使用|分隔）
 	);
 	foreach(array_keys($settings) as $key) {
@@ -92,7 +92,7 @@ wp_clear_scheduled_hook('wp_maybe_auto_update');     // 移除已有的自动更
 
 
 if ( is_admin() ) {
-    // 移除仪表盘灯菜单
+    // 移除仪表盘等菜单
     add_action('admin_menu', 'remove_admin_menus');
     add_action('load-index.php','dashboard_redirect');
     add_filter('login_redirect','login_redirect', 10, 3);
@@ -107,7 +107,7 @@ if ( is_admin() ) {
     remove_action('admin_init', '_maybe_update_core');
 
     // 移除后台插件更新检查
-    remove_action('admin_init', '_maybe_update_plugins'); // 禁止 WordPress 更新插件
+    remove_action('admin_init', '_maybe_update_plugins');  // 禁止 WordPress 更新插件
     remove_action('load-plugins.php', 'wp_update_plugins');
     remove_action('load-update.php', 'wp_update_plugins');
     remove_action('load-update-core.php', 'wp_update_plugins');
